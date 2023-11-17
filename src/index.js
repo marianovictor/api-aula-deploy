@@ -1,14 +1,20 @@
 require('dotenv').config();
 
 const express = require('express');
-
+const knex = require('./conexao');
 const PORT = process.env.PORT || 3000;
 const app = express();
-const carros = ['S10', 'Hilux', 'Ford Ranger'];
+
 app.use(express.json());
 
 app.get('/', async(req, res)=>{
-    return res.json(carros);
+    
+    try{
+        const carros = await knex('carros');
+        return res.json(carros);
+    }catch(error){
+        return res.json(error.message);
+    }
 })
 
 
