@@ -13,7 +13,7 @@ app.get('/', async(req, res)=>{
         const carros = await knex('carros');
         return res.json(carros);
     }catch(error){
-        return res.json('Erro interno do servidor');
+        return res.json(error.message);
     }
 })
 
