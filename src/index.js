@@ -13,6 +13,7 @@ app.get('/', async(req, res)=>{
         const carros = await knex('carros');
         return res.json(carros);
     }catch(error){
+        console.log(error);
         return res.json(error.message);
     }
 })
