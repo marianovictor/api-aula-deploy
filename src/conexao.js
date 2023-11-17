@@ -10,4 +10,6 @@ const knex = require('knex')({
       database : process.env.DB_NAME
     },
     ssl: { rejectUnauthorized: false }
-  });
+});
+
+module.exports = knex;
